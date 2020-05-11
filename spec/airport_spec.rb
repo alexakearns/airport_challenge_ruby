@@ -9,6 +9,10 @@ describe Airport do
       subject.land(boeing)
       expect(subject.hangar).to include(boeing)
     end
+
+    it 'landed plane show not in flight' do
+      subject.land(boeing)
+      expect(boeing).to_not be_flying
   end
 
   context '#take off' do
