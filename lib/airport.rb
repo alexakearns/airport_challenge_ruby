@@ -9,15 +9,11 @@ class Airport
   end
 
   def land(plane)
-    store(plane)
+    @hangar << plane
   end
 
   def take_off(plane)
     @hangar.delete(plane)
-  end
-
-  def store(plane)
-    @hangar << plane
   end
 
 end
