@@ -1,5 +1,9 @@
 class Airport
 
+  def initialize
+    @hanger = []
+  end
+
   def land(plane)
     plane
   end
@@ -7,5 +11,7 @@ class Airport
   def take_off(plane)
     plane
   end
+
+  
 
 end

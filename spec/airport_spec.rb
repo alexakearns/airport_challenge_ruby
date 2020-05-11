@@ -14,8 +14,8 @@ describe Airport do
     end
 
     it 'plane stored in hanger when lands' do
-      subject.land(boeing)
-      expect(subject.hanger[boeing]).to be_an_instance_of(Plane)
+      subject.store(boeing)
+      expect(@hanger).to contain_exactly(boeing)
     end
   end
 
