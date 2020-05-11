@@ -5,17 +5,22 @@ describe Airport do
   let(:boeing) {Plane.new}
 
   context '#land' do
-    it 'plane in as argument lands at airport' do
+    xit 'plane in as argument lands at airport' do
       expect(subject.land("plane")).to eq "plane"
     end
 
-    it 'returns plane object in #land at airport' do
+    xit 'returns plane object in #land at airport' do
       expect(subject.land(boeing)).to be_an_instance_of(Plane)
     end
 
-    it 'plane stored in hanger when lands' do
+    it 'plane stored in hangar' do
       subject.store(boeing)
-      expect(@hanger).to contain_exactly(boeing)
+      expect(subject.hangar).to include(boeing)
+    end
+
+    it 'stores plane in hangar' do
+      subject.land(boeing)
+      expect(subject.hangar).to include(boeing)
     end
   end
 
@@ -23,6 +28,7 @@ describe Airport do
     it 'plane can #take off from airport' do
       expect(subject.take_off(boeing)).to eq boeing
     end
+
   end 
 
 
