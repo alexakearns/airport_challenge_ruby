@@ -12,6 +12,11 @@ describe Airport do
     it 'returns plane object in #land at airport' do
       expect(subject.land(boeing)).to be_an_instance_of(Plane)
     end
+
+    it 'plane stored in hanger when lands' do
+      subject.land(boeing)
+      expect(subject.hanger[boeing]).to be_an_instance_of(Plane)
+    end
   end
 
   context '#take off' do
@@ -19,5 +24,7 @@ describe Airport do
       expect(subject.take_off(boeing)).to eq boeing
     end
   end 
+
+
   
 end
