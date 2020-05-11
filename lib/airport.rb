@@ -2,10 +2,11 @@ require_relative 'plane'
 
 class Airport
 
-  attr_reader :hangar
+  attr_reader :hangar, :capacity
 
   def initialize
     @hangar = []
+    @capacity = 5
   end
 
   def land(plane)
@@ -17,5 +18,6 @@ class Airport
     @hangar.delete(plane)
     plane.take_off
   end
+
 
 end
