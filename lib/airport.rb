@@ -10,6 +10,7 @@ class Airport
 
   def land(plane)
     @hangar << plane
+    plane.land
   end
 
   def take_off(plane)
