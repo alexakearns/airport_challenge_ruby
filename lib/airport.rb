@@ -13,7 +13,7 @@ class Airport
   end
 
   def take_off(plane)
-    plane
+    @hangar.delete(plane)
   end
 
   def store(plane)

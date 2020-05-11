@@ -25,10 +25,15 @@ describe Airport do
   end
 
   context '#take off' do
-    it 'plane can #take off from airport' do
+    xit 'plane can #take off from airport' do
       expect(subject.take_off(boeing)).to eq boeing
     end
 
+    it 'plane removed from hanger on take off' do
+      subject.land(boeing)
+      subject.take_off(boeing)
+      expect(subject.hangar).to_not include(boeing)
+    end
   end 
 
 
