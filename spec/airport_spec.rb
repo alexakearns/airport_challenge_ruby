@@ -2,7 +2,7 @@ require 'airport'
 
 describe Airport do
 
-  let(:boeing) {Plane.new}
+  let(:boeing) { Plane.new }
 
   context '#land' do
     it 'stores plane in hangar' do
@@ -31,4 +31,5 @@ describe Airport do
     end
   end 
   
-end    
+end  
+  
