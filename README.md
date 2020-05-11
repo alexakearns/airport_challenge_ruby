@@ -77,14 +77,15 @@ Finally, don’t overcomplicate things. This task isn’t as hard as it may seem
 
 
 
+## Planning
+
+|  Objects  |  Messages             |
+|-----------|-----------------------|
+|  Airport  | land, take off, left  |
+|  Plane    | status
+
+
 ## Status and remaining steps
-
-For this challenge, I completed user story 4. The steps I was working on at the end of this task was to ensure planes only took off from airports they were in and landed into airports they weren't and were flying when not in either. 
-
-Having been able to confirm whether a plane is at the airport, my next steps would be:
-- :land raise_error when trying to land if already at the airport (@hanger = [plane])
-- :take_off raise_error when plane not in the airport (@hanger = [])
-- :flying? within Plane class. Still to establish how to do this. 
 
 
 ## Reflections
