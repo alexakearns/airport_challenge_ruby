@@ -13,6 +13,7 @@ describe Airport do
     it 'landed plane show not in flight' do
       subject.land(boeing)
       expect(boeing).to_not be_flying
+    end
   end
 
   context '#take off' do
@@ -26,4 +27,4 @@ describe Airport do
 
 
   
-end
+end    
