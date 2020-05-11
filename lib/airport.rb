@@ -21,5 +21,4 @@ class Airport
     plane.take_off
   end
 
-
 end

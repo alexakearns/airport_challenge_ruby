@@ -15,7 +15,7 @@ describe Airport do
       expect(boeing).to_not be_flying
     end
 
-    xit 'plane can not land if airport is full' do
+    it 'plane can not land if airport is full' do
       subject
       5.times {subject.land(boeing)}
       expect { subject.land(boeing) }.to raise_error "airport is full"
