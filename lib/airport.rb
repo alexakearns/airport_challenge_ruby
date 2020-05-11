@@ -9,7 +9,7 @@ class Airport
   end
 
   def land(plane)
-    plane
+    store(plane)
   end
 
   def take_off(plane)
