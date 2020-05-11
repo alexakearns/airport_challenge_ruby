@@ -12,4 +12,9 @@ describe Plane do
     subject.land
     expect(subject.flying?).to be false
   end  
+
+  it 'plane taking off changes flight status to in flight' do
+    subject.take_off
+    expect(subject.flying?).to be true
+  end
 end
