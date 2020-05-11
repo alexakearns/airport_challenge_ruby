@@ -14,6 +14,12 @@ describe Airport do
       subject.land(boeing)
       expect(boeing).to_not be_flying
     end
+
+    xit 'plane can not land if airport is full' do
+      subject
+      5.times {subject.land(boeing)}
+      expect { subject.land(boeing) }.to raise_error "airport is full"
+    end
   end
 
   context '#take off' do
@@ -30,6 +36,11 @@ describe Airport do
       expect(boeing).to be_flying
     end
   end 
+
+  context 'airport capacity' do
+    it 'airport default capacity equals 5' do
+      expect(subject.capacity).to eq 5
+    end
+  end
   
 end  
-  
