@@ -23,8 +23,12 @@ describe Airport do
       subject.take_off(boeing)
       expect(subject.hangar).to_not include(boeing)
     end
+
+    it 'plane taken off shown to be in flight' do
+      subject.land(boeing)
+      subject.take_off(boeing)
+      expect(boeing).to be_flying
+    end
   end 
-
-
   
 end    
