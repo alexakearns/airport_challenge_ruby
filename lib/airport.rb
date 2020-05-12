@@ -25,4 +25,8 @@ class Airport
     plane.take_off
   end
 
+  def change_capacity(num)
+    @capacity = num
+  end
+
 end
