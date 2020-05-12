@@ -40,6 +40,11 @@ describe Airport do
     it 'airport default capacity equals 5' do
       expect(subject.capacity).to eq 5
     end
+
+    it 'changes airport capacity' do
+      subject.change_capacity(3)
+      expect(subject.capacity).to eq 3
+    end
   end
   
 end  
