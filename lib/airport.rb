@@ -29,4 +29,7 @@ class Airport
     @capacity = num
   end
 
+  def in_hangar?(plane)
+    @hangar.include?(plane)
+  end
 end
