@@ -21,8 +21,12 @@ class Airport
   end
 
   def take_off(plane)
-    @hangar.delete(plane)
-    plane.take_off
+    if in_hangar?(plane) == true
+      @hangar.delete(plane)
+      plane.take_off
+    else
+      raise "plane not in hangar"
+    end
   end
 
   def change_capacity(num)
