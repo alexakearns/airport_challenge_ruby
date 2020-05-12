@@ -12,8 +12,12 @@ class Airport
   end
 
   def land(plane)
-    @hangar << plane
-    plane.land
+    if @hangar.count == @capacity 
+      raise "airport is full"
+    else
+      @hangar << plane
+      plane.land
+    end
   end
 
   def take_off(plane)
