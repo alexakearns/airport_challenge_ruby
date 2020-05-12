@@ -34,6 +34,11 @@ describe Airport do
       subject.take_off(boeing)
       expect(boeing).to be_flying
     end
+
+    it 'confirms plane is in hangar' do
+      subject.land(boeing)
+      expect(subject.in_hangar?(boeing)).to be true
+    end
   end 
 
   context 'airport capacity' do
