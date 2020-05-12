@@ -45,6 +45,12 @@ describe Airport do
       subject.change_capacity(3)
       expect(subject.capacity).to eq 3
     end
+
+    it 'will not let plane land when at new capacity' do 
+      subject.change_capacity(2)
+      2.times { subject.land(boeing) }
+      expect { subject.land(boeing) }.to raise_error "airport is full"
+    end
   end
   
 end  
