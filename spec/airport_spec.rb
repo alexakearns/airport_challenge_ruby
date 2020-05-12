@@ -35,10 +35,10 @@ describe Airport do
       expect(boeing).to be_flying
     end
 
-    it 'confirms plane is in hangar' do
-      subject.land(boeing)
-      expect(subject.in_hangar?(boeing)).to be true
+    it 'will not let plane take off if not in hanger' do
+      expect { subject.take_off(boeing) }.to raise_error "plane not in hangar"
     end
+
   end 
 
   context 'airport capacity' do
@@ -57,5 +57,11 @@ describe Airport do
       expect { subject.land(boeing) }.to raise_error "airport is full"
     end
   end
-  
+
+  context 'plane in hangar?' do
+    it 'confirms plane is in hangar' do
+      subject.land(boeing)
+      expect(subject.in_hangar?(boeing)).to be true
+    end
+  end  
 end  
