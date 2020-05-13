@@ -39,6 +39,9 @@ describe Airport do
       expect { subject.take_off(boeing) }.to raise_error "plane not in hangar"
     end
 
+    # it 'plane can not take off if weather is stormy' do
+    #   subject.land(boeing)
+      
   end 
 
   context 'airport capacity' do
@@ -64,4 +67,11 @@ describe Airport do
       expect(subject.in_hangar?(boeing)).to be true
     end
   end  
+
+  context '#is_stormy?' do
+    it 'stormy weather returns true' do
+      expect(subject).to receive(:rand).and_return(0.9)
+      expect(subject.is_stormy?).to be true
+    end
+  end
 end  
