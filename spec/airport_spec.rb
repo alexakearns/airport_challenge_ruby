@@ -73,5 +73,10 @@ describe Airport do
       allow(subject).to receive(:is_stormy?).and_return(true)
       expect(subject.is_stormy?).to be true
     end
+
+    it 'stormy weather returns true' do
+      allow(subject).to receive(:is_stormy?).and_return(false)
+      expect(subject.is_stormy?).to be false
+    end
   end
 end  
