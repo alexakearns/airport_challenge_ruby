@@ -39,9 +39,11 @@ describe Airport do
       expect { subject.take_off(boeing) }.to raise_error "plane not in hangar"
     end
 
-    # it 'plane can not take off if weather is stormy' do
-    #   subject.land(boeing)
-      
+    it 'plane can not take off if weather is stormy' do
+      subject.land(boeing)
+      allow(subject).to receive(:is_stormy?).and_return(true)
+      expect { subject.take_off(boeing) }.to raise_error "cannot take off due to stormy weather"
+    end
   end 
 
   context 'airport capacity' do
