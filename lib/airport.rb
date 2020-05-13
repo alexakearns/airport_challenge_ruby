@@ -21,7 +21,6 @@ class Airport
   end
 
   def take_off(plane)
-    puts is_stormy?
     if is_stormy? == false
       if in_hangar?(plane) == true
         @hangar.delete(plane)

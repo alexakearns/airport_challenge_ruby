@@ -19,6 +19,11 @@ describe Airport do
       5.times {subject.land(boeing) }
       expect { subject.land(boeing) }.to raise_error "airport is full"
     end
+
+    it 'plane can not land if weather is stormy' do
+      allow(subject).to receive(:is_stormy?).and_return(true)
+      expect { subject.land(boeing) }.to raise_error "cannot land due to stormy weather"
+    end
   end
 
   context '#take off' do
