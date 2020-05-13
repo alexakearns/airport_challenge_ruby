@@ -24,18 +24,21 @@ describe Airport do
   context '#take off' do
 
     it 'plane removed from hanger on take off' do
-      subject.land(boeing)
+      subject.land(boeing)      
+      allow(subject).to receive(:is_stormy?).and_return(false)
       subject.take_off(boeing)
       expect(subject.hangar).to_not include(boeing)
     end
 
     it 'plane taken off shown to be in flight' do
       subject.land(boeing)
+      allow(subject).to receive(:is_stormy?).and_return(false)
       subject.take_off(boeing)
       expect(boeing).to be_flying
     end
 
     it 'will not let plane take off if not in hanger' do
+      allow(subject).to receive(:is_stormy?).and_return(false)
       expect { subject.take_off(boeing) }.to raise_error "plane not in hangar"
     end
 

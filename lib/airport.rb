@@ -21,11 +21,16 @@ class Airport
   end
 
   def take_off(plane)
-    if in_hangar?(plane) == true
-      @hangar.delete(plane)
-      plane.take_off
+    puts is_stormy?
+    if is_stormy? == false
+      if in_hangar?(plane) == true
+        @hangar.delete(plane)
+        plane.take_off
+      else
+        raise "plane not in hangar"
+      end
     else
-      raise "plane not in hangar"
+      raise "cannot take off due to stormy weather"
     end
   end
 
@@ -37,7 +42,7 @@ class Airport
     @hangar.include?(plane)
   end
 
-  def is_stormy?(weather)
+  def is_stormy?
     rand < 0.3
   end
 
