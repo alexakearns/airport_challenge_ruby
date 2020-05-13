@@ -37,5 +37,8 @@ class Airport
     @hangar.include?(plane)
   end
 
+  def is_stormy?(weather)
+    rand < 0.3
+  end
 
 end
