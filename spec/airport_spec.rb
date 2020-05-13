@@ -70,7 +70,7 @@ describe Airport do
 
   context '#is_stormy?' do
     it 'stormy weather returns true' do
-      expect(subject).to receive(:rand).and_return(0.9)
+      allow(subject).to receive(:is_stormy?).and_return(true)
       expect(subject.is_stormy?).to be true
     end
   end
