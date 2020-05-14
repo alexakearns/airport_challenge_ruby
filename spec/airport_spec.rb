@@ -3,25 +3,30 @@ require 'airport'
 describe Airport do
 
   let(:boeing) { Plane.new }
+  let(:good_weather) { allow(subject).to receive(:is_stormy?).and_return false }
+  let(:stormy_weather) { allow(subject).to receive(:is_stormy?).and_return true }
 
   context '#land' do
     it 'stores plane in hangar' do
+      good_weather
       subject.land(boeing)
       expect(subject.hangar).to include(boeing)
     end
 
     it 'landed plane show not in flight' do
+      good_weather
       subject.land(boeing)
       expect(boeing).to_not be_flying
     end
 
     it 'plane can not land if airport is full' do
-      5.times {subject.land(boeing) }
+      good_weather
+      5.times { subject.land(boeing) }
       expect { subject.land(boeing) }.to raise_error "airport is full"
     end
 
     it 'plane can not land if weather is stormy' do
-      allow(subject).to receive(:is_stormy?).and_return(true)
+      stormy_weather
       expect { subject.land(boeing) }.to raise_error "cannot land due to stormy weather"
     end
   end
@@ -29,15 +34,15 @@ describe Airport do
   context '#take off' do
 
     it 'plane removed from hanger on take off' do
+      good_weather
       subject.land(boeing)      
-      allow(subject).to receive(:is_stormy?).and_return(false)
       subject.take_off(boeing)
       expect(subject.hangar).to_not include(boeing)
     end
 
     it 'plane taken off shown to be in flight' do
+      good_weather
       subject.land(boeing)
-      allow(subject).to receive(:is_stormy?).and_return(false)
       subject.take_off(boeing)
       expect(boeing).to be_flying
     end
@@ -65,6 +70,7 @@ describe Airport do
     end
 
     it 'will not let plane land when at new capacity' do 
+      good_weather
       subject.change_capacity(2)
       2.times { subject.land(boeing) }
       expect { subject.land(boeing) }.to raise_error "airport is full"
@@ -73,6 +79,7 @@ describe Airport do
 
   context 'plane in hangar?' do
     it 'confirms plane is in hangar' do
+      good_weather
       subject.land(boeing)
       expect(subject.in_hangar?(boeing)).to be true
     end

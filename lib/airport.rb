@@ -12,11 +12,15 @@ class Airport
   end
 
   def land(plane)
-    if @hangar.count == @capacity 
-      raise "airport is full"
+    if is_stormy? == false
+      if @hangar.count == @capacity 
+        raise "airport is full"
+      else
+        @hangar << plane
+        plane.land
+      end
     else
-      @hangar << plane
-      plane.land
+      raise "cannot land due to stormy weather"
     end
   end
 
