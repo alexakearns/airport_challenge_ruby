@@ -3,8 +3,8 @@ require 'airport'
 describe Airport do
 
   let(:boeing) { Plane.new }
-  let(:good_weather) { allow(subject).to receive(:is_stormy?).and_return false }
-  let(:stormy_weather) { allow(subject).to receive(:is_stormy?).and_return true }
+  let(:good_weather) { allow(subject).to receive(:stormy?).and_return false }
+  let(:stormy_weather) { allow(subject).to receive(:stormy?).and_return true }
 
   context '#land' do
     it 'stores plane in hangar' do
@@ -48,13 +48,14 @@ describe Airport do
     end
 
     it 'will not let plane take off if not in hanger' do
-      allow(subject).to receive(:is_stormy?).and_return(false)
+      good_weather
       expect { subject.take_off(boeing) }.to raise_error "plane not in hangar"
     end
 
     it 'plane can not take off if weather is stormy' do
+      good_weather
       subject.land(boeing)
-      allow(subject).to receive(:is_stormy?).and_return(true)
+      stormy_weather
       expect { subject.take_off(boeing) }.to raise_error "cannot take off due to stormy weather"
     end
   end 
@@ -85,15 +86,15 @@ describe Airport do
     end
   end  
 
-  context '#is_stormy?' do
+  context '#stormy?' do
     it 'stormy weather returns true' do
-      allow(subject).to receive(:is_stormy?).and_return(true)
-      expect(subject.is_stormy?).to be true
+      stormy_weather
+      expect(subject.stormy?).to be true
     end
 
-    it 'stormy weather returns true' do
-      allow(subject).to receive(:is_stormy?).and_return(false)
-      expect(subject.is_stormy?).to be false
+    it 'good weather returns false' do
+      good_weather
+      expect(subject.stormy?).to be false
     end
   end
 end  

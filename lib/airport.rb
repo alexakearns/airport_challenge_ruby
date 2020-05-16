@@ -12,7 +12,7 @@ class Airport
   end
 
   def land(plane)
-    if is_stormy? == false
+    if stormy? == false
       if @hangar.count == @capacity 
         raise "airport is full"
       else
@@ -25,7 +25,7 @@ class Airport
   end
 
   def take_off(plane)
-    if is_stormy? == false
+    if stormy? == false
       if in_hangar?(plane) == true
         @hangar.delete(plane)
         plane.take_off
@@ -45,7 +45,7 @@ class Airport
     @hangar.include?(plane)
   end
 
-  def is_stormy?
+  def stormy?
     rand < 0.3
   end
 
