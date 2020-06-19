@@ -16,8 +16,12 @@ class Airport
       if @hangar.count == @capacity 
         raise "airport is full"
       else
-        @hangar << plane
-        plane.land
+        if in_hangar?(plane)
+          raise "this plane is already in the hangar"
+        else
+          @hangar << plane
+          plane.land
+        end
       end
     else
       raise "cannot land due to stormy weather"
