@@ -89,24 +89,4 @@ describe Airport do
       expect { subject.change_capacity(3) }.to raise_error "more planes in hangar than new capacity, have some take off first"
     end
   end
-
-  context 'plane in hangar?' do
-    it 'confirms plane is in hangar' do
-      good_weather
-      subject.land(boeing)
-      expect(subject.in_hangar?(boeing)).to be true
-    end
-  end  
-
-  context '#stormy?' do
-    it 'stormy weather returns true' do
-      stormy_weather
-      expect(subject.stormy?).to be true
-    end
-
-    it 'good weather returns false' do
-      good_weather
-      expect(subject.stormy?).to be false
-    end
-  end
 end  
