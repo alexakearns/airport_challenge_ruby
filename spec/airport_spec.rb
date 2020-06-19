@@ -76,6 +76,12 @@ describe Airport do
       2.times { subject.land(boeing) }
       expect { subject.land(boeing) }.to raise_error "airport is full"
     end
+
+    it 'will not let capacity change to less than number of planes in hangar' do
+      good_weather
+      5.times { subject.land(boeing) }
+      expect { subject.change_capacity(3) }.to raise_error "more planes in hangar than new capacity, have some take off first"
+    end
   end
 
   context 'plane in hangar?' do
