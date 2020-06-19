@@ -31,6 +31,8 @@ class Airport
     end
   end
   
+  private
+
   def landing_checks(plane)
     raise "airport is full" if @hangar.count == capacity
     raise "this plane is already in the hangar" if in_hangar?(plane)
