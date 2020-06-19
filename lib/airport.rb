@@ -18,16 +18,9 @@ class Airport
   end
     
   def take_off(plane)
-    if stormy? == false
-      if in_hangar?(plane) == true
-        @hangar.delete(plane)
-        plane.take_off
-      else
-        raise "plane not in hangar"
-      end
-    else
-      raise "cannot take off due to stormy weather"
-    end
+    take_off_checks(plane)
+    @hangar.delete(plane)
+    plane.take_off
   end
   
   def change_capacity(num)
@@ -38,14 +31,17 @@ class Airport
     end
   end
   
-  private
-
   def landing_checks(plane)
     raise "airport is full" if @hangar.count == capacity
     raise "this plane is already in the hangar" if in_hangar?(plane)
     raise "cannot land due to stormy weather" if stormy?
   end
-
+  
+  def take_off_checks(plane)
+    raise "plane not in hangar" unless in_hangar?(plane)
+    raise "cannot take off due to stormy weather" if stormy?
+  end
+  
   def in_hangar?(plane)
     @hangar.include?(plane)
   end
