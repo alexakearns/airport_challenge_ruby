@@ -13,6 +13,12 @@ describe Airport do
       expect(subject.hangar).to include(boeing)
     end
 
+    it 'plane cannot land if already in hangar' do
+      good_weather
+      subject.land(boeing)
+      expect { subject.land(boeing) }.to raise_error "this plane is already in the hangar"
+    end
+
     it 'landed plane show not in flight' do
       good_weather
       subject.land(boeing)
@@ -21,7 +27,7 @@ describe Airport do
 
     it 'plane can not land if airport is full' do
       good_weather
-      5.times { subject.land(boeing) }
+      5.times { subject.land(Plane.new) }
       expect { subject.land(boeing) }.to raise_error "airport is full"
     end
 
@@ -73,13 +79,13 @@ describe Airport do
     it 'will not let plane land when at new capacity' do 
       good_weather
       subject.change_capacity(2)
-      2.times { subject.land(boeing) }
+      2.times { subject.land(Plane.new) }
       expect { subject.land(boeing) }.to raise_error "airport is full"
     end
 
     it 'will not let capacity change to less than number of planes in hangar' do
       good_weather
-      5.times { subject.land(boeing) }
+      5.times { subject.land(Plane.new) }
       expect { subject.change_capacity(3) }.to raise_error "more planes in hangar than new capacity, have some take off first"
     end
   end
