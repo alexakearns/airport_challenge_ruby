@@ -22,7 +22,7 @@ We have a request from a client to write the software to control the flow of pla
  > To ensure safety  
  > I want to prevent landing when the airport is full  
 
-- [ ] User Story 4
+- [x] User Story 4
 
  > As the system designer  
  > So that the software can be used for many different airports  
