@@ -2,9 +2,9 @@ require 'airport'
 
 describe Airport do
 
-  let(:boeing) {Plane.new}
-  let(:airbus) {Plane.new}
-  let(:concord) {Plane.new}
+  let(:boeing) { Plane.new }
+  let(:airbus) { Plane.new }
+  let(:concord) { Plane.new }
   let(:stormy_weather) { allow(subject).to receive(:stormy?).and_return true }
   let(:good_weather) { allow(subject).to receive(:stormy?).and_return false }
 

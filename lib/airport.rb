@@ -25,11 +25,9 @@ class Airport
   end
   
   def change_capacity(num)
-    if hangar.length > num
-      raise "more planes in hangar than new capacity, have some take off first"
-    else
-      @capacity = num
-    end
+    raise "more planes in hangar than new capacity, have some take off first" if hangar.length > num
+    
+    @capacity = num
   end
   
   private
