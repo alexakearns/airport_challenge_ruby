@@ -48,9 +48,4 @@ class Airport
   def in_hangar?(plane)
     @hangar.include?(plane)
   end
-  
-  def stormy?
-    rand < 0.3
-  end
-
 end
